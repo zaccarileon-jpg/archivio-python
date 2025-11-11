@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Risultati ricerca</h2>
+<form method="get">
+  <input name="q" value="{{ query or '' }}" placeholder="cerca nelle tue note...">
+  <button type="submit">Cerca</button>
+</form>
+{% if query %}
+  <p>Ricerca per: <b>{{ query }}</b></p>
+{% endif %}
+{% if risultati %}
+  {% for n in risultati %}
+    <div class="nota">
+      <h3><a href="{{ url_for('nota_dettaglio', nota_id=n.id) }}">{{ n.titolo }}</a></h3>
+      <small>{{ n.creata_il }}</small>
+      {% if n.tags %}<small>tag: {{ ", ".join(n.tags) }}</small>{% endif %}
+    </div>
+  {% endfor %}
+{% elif query %}
+  <p>Nessun risultato.</p>
+{% endif %}
+{% endblock %}
+

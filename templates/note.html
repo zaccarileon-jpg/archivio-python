@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ nota.titolo }}</h2>
+<p><small>{{ nota.creata_il }}</small></p>
+
+{% if nota.fonte %}
+  <p><b>Fonte:</b> {{ nota.fonte }}</p>
+{% endif %}
+
+{% if nota.tags %}
+  <p><b>Tag:</b> {{ ", ".join(nota.tags) }}</p>
+{% endif %}
+
+<p>{{ nota.testo }}</p>
+
+<p>
+  <a href="{{ url_for('edit_nota', nota_id=nota.id) }}">✏️ Modifica</a>
+</p>
+
+<form method="post" action="{{ url_for('delete_nota', nota_id=nota.id) }}" style="margin-top:10px;">
+  <button type="submit">Elimina nota 🗑️</button>
+</form>
+
+<p><a href="{{ url_for('home') }}">← Torna alle note</a></p>
+{% endblock %}
+

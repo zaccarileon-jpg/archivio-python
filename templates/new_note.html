@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Nuova nota</h2>
+<form method="post">
+  <label>Titolo:<br><input name="titolo" required></label><br><br>
+  <label>Testo:<br><textarea name="testo" rows="5" cols="50" required></textarea></label><br><br>
+  <label>Fonte:<br><input name="fonte"></label><br><br>
+  <label>Tag (separati da virgola):<br><input name="tags"></label><br><br>
+  <button type="submit">Salva</button>
+</form>
+{% endblock %}
+

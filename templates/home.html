@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Le tue note</h2>
+<p><a href="{{ url_for('nuova_nota') }}">+ Crea nuova nota</a></p>
+{% if not note %}
+  <p>Nessuna nota ancora.</p>
+{% else %}
+  {% for n in note %}
+    <div class="nota">
+      <h3><a href="{{ url_for('nota_dettaglio', nota_id=n.id) }}">{{ n.titolo }}</a></h3>
+      <small>{{ n.creata_il }}</small><br>
+      {% if n.tags %}<small>tag: {{ ", ".join(n.tags) }}</small>{% endif %}
+      <p>{{ n.testo[:120] }}{% if n.testo|length > 120 %}...{% endif %}</p>
+    </div>
+  {% endfor %}
+{% endif %}
+{% endblock %}
+
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>Le tue note</h2>
+  <p class="muted">Crea, cerca e modifica i tuoi appunti.</p>
+  <p><a class="link" href="{{ url_for('nuova_nota') }}">+ Nuova nota</a></p>
+</div>
+
+{% if not note %}
+  <div class="card">
+    <p>Nessuna nota ancora.</p>
+  </div>
+{% else %}
+  <div class="notes-grid">
+    {% for n in note %}
+      <div class="note-card">
+        <h3><a class="link" href="{{ url_for('nota_dettaglio', nota_id=n.id) }}">{{ n.titolo }}</a></h3>
+        <p class="muted">{{ n.creata_il }}</p>
+        {% if n.tags %}
+          <p>
+          {% for t in n.tags %}
+            <span class="tag">{{ t }}</span>
+          {% endfor %}
+          </p>
+        {% endif %}
+        <p>
+          {{ n.testo[:120] }}{% if n.testo|length > 120 %}...{% endif %}
+        </p>
+        <p><a class="link" href="{{ url_for('nota_dettaglio', nota_id=n.id) }}">Apri →</a></p>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}
+

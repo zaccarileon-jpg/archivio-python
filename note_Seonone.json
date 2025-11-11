@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "titolo": "lalala",
+    "testo": "alalalalalala ciao mi chiamo giorgia",
+    "fonte": "",
+    "tags": [],
+    "creata_il": "2025-11-11 17:08"
+  },
+  {
+    "id": 2,
+    "titolo": "gaia mi da una canna",
+    "testo": "gaietta mi dara una canna se la accompagno a casa",
+    "fonte": "gaia",
+    "tags": [
+      "canna"
+    ],
+    "creata_il": "2025-11-11 17:18"
+  }
+]

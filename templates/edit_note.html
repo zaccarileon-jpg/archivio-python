@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Modifica nota</h2>
+
+<form method="post">
+  <label>Titolo:<br>
+    <input name="titolo" value="{{ nota.titolo }}" required>
+  </label><br><br>
+
+  <label>Testo:<br>
+    <textarea name="testo" rows="5" cols="50" required>{{ nota.testo }}</textarea>
+  </label><br><br>
+
+  <label>Fonte:<br>
+    <input name="fonte" value="{{ nota.fonte }}">
+  </label><br><br>
+
+  <label>Tag (separati da virgola):<br>
+    <input name="tags" value="{{ ', '.join(nota.tags) }}">
+  </label><br><br>
+
+  <button type="submit">Salva modifiche ✅</button>
+</form>
+
+<p><a href="{{ url_for('nota_dettaglio', nota_id=nota.id) }}">← Annulla</a></p>
+{% endblock %}
+
